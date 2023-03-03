@@ -1,4 +1,4 @@
-export interface Country {
+export interface ICountry {
   name: string;
   topLevelDomain: string[];
   alpha2Code: string;
@@ -77,7 +77,7 @@ export interface Translations {
   hu: string;
 }
 
-const countries: Country[] = [
+const countries: ICountry[] = [
   {
     name: 'Afghanistan',
     topLevelDomain: ['.af'],

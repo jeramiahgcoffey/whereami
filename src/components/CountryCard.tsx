@@ -1,10 +1,6 @@
-import { Country } from '../../data';
+import { ICountry } from '../../data';
 
-type Props = {
-  country: Country;
-};
-
-export default function CountryCard({ country }: Props) {
+export default function CountryCard({ country }: { country: ICountry }) {
   return (
     <div className="bg-white dark:bg-dark-mode-el w-60 rounded-lg mb-12 flex flex-col justify-between">
       <div className="relative h-36">

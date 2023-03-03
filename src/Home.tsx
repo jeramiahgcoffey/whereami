@@ -2,7 +2,6 @@ import { useContext, useState } from 'react';
 import { ThemeContext } from './context/ThemeContext';
 
 import Navbar from './components/Navbar';
-import { FaSearch, FaArrowDown } from 'react-icons/fa';
 import countries from '../data';
 import CountryCard from './components/CountryCard';
 import Filters from './components/Filters';
