@@ -1,4 +1,4 @@
-import { Country } from '../data';
+import { Country } from '../../data';
 
 type Props = {
   country: Country;

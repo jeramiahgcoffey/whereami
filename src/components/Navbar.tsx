@@ -1,4 +1,4 @@
-import { ThemeContext } from './context/ThemeContext';
+import { ThemeContext } from '../context/ThemeContext';
 import { useContext } from 'react';
 import { FaRegMoon, FaRegSun } from 'react-icons/fa';
 
