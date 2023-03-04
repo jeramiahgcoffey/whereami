@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom';
 import { ICountry } from '../../data';
 
 export default function CountryCard({ country }: { country: ICountry }) {
   return (
+    // <Link to={`/${country.name}`}>
     <div
       className="bg-white dark:bg-dark-mode-el rounded-lg flex flex-col flex-1"
       style={{ minWidth: '240px', maxWidth: '300px' }}
@@ -27,5 +29,6 @@ export default function CountryCard({ country }: { country: ICountry }) {
         </div>
       </div>
     </div>
+    // </Link>
   );
 }
