@@ -41,10 +41,10 @@ export default function Home() {
 
   return (
     <div className={state.mode}>
-      <div className="dark:text-white text-light-mode-text font-semibold text-16">
+      <div className="bg-light-mode-bg dark:bg-dark-mode-bg dark:text-white text-light-mode-text font-semibold text-16 min-h-screen h-full">
         <Navbar />
-        <main className=" bg-light-mode-bg dark:bg-dark-mode-bg h-full">
-          <div className="max-w-6xl mx-auto">
+        <main>
+          <div className="max-w-6xl mx-auto relative">
             <Filters
               handleInputChange={handleSetQuery}
               value={query}
