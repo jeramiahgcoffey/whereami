@@ -7,10 +7,12 @@ export default function Navbar() {
 
   return (
     <nav className="dark:bg-dark-mode-el drop-shadow-md">
-      <div className="flex justify-between items-center max-w-6xl mx-auto h-24 ">
-        <h2 className="font-extrabold text-2xl">Where in the world?</h2>
+      <div className="flex justify-between items-center max-w-6xl mx-auto h-24 px-4">
+        <h2 className="font-extrabold text-xl md:text-2xl">
+          Where in the world?
+        </h2>
         <div
-          className="flex items-center cursor-pointer"
+          className="flex items-center cursor-pointer text-14"
           onClick={() =>
             dispatch({
               type: 'TOGGLE_DARK_MODE',

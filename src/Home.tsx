@@ -44,14 +44,14 @@ export default function Home() {
       <div className="bg-light-mode-bg dark:bg-dark-mode-bg dark:text-white text-light-mode-text font-semibold text-16 min-h-screen h-full">
         <Navbar />
         <main>
-          <div className="max-w-6xl mx-auto relative">
+          <div className="max-w-6xl mx-auto relative px-4 pb-4">
             <Filters
               handleInputChange={handleSetQuery}
               value={query}
               options={regions()}
             />
 
-            <div className="flex flex-wrap justify-between">
+            <div className="flex flex-wrap justify-center md:justify-around gap-12">
               {results().map((country) => (
                 <CountryCard country={country} key={country.alpha2Code} />
               ))}
