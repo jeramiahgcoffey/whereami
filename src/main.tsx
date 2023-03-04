@@ -18,7 +18,7 @@ const router = createBrowserRouter(
       ],
     },
   ],
-  { basename: '/' }
+  { basename: '/whereami' }
 );
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
