@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Root, { loader as homeLoader } from './routes/root';
+import ThemeProvider from './context/providers';
+import Home from './pages/Home';
 import './index.css';
-import Root from './routes/root';
-import Home from './Home';
 
 const router = createBrowserRouter(
   [
@@ -14,15 +15,18 @@ const router = createBrowserRouter(
         {
           path: '/',
           element: <Home />,
+          loader: homeLoader,
         },
       ],
     },
   ],
-  { basename: '/whereami' }
+  { basename: '/' }
 );
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );
