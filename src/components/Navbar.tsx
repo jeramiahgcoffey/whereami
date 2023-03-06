@@ -7,7 +7,7 @@ export default function Navbar() {
   const { state, dispatch } = useContext(ThemeContext);
 
   return (
-    <nav className="dark:bg-dark-mode-el drop-shadow-md">
+    <nav className=" bg-white dark:bg-dark-mode-el drop-shadow-md">
       <div className="flex justify-between items-center max-w-6xl mx-auto h-24 px-4">
         <Link to="/">
           <h2 className="font-extrabold text-xl md:text-2xl">
