@@ -1,15 +1,23 @@
 import { createContext } from 'react';
 
-export const initialThemeState = { mode: 'light' };
+const localThemeState = localStorage.getItem('theme');
+export const initialThemeState = localThemeState
+  ? JSON.parse(localThemeState)
+  : { mode: 'light' };
 
 export const themeReducer = (
   state: { mode: string },
   action: { type: string }
 ) => {
   if (action.type === 'TOGGLE_DARK_MODE') {
-    return state.mode === 'light'
-      ? { ...state, mode: 'dark' }
-      : { ...state, mode: 'light' };
+    const result =
+      state.mode === 'light'
+        ? { ...state, mode: 'dark' }
+        : { ...state, mode: 'light' };
+
+    localStorage.setItem('theme', JSON.stringify({ mode: result.mode }));
+
+    return result;
   }
   return state;
 };
