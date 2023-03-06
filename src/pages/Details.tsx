@@ -32,22 +32,22 @@ export default function Details() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto py-12">
+    <div className="max-w-md md:max-w-6xl mx-auto px-4">
       <Link to={'/'}>
-        <button className="bg-white dark:bg-dark-mode-el my-12 mb-12 px-8 py-2 rounded-lg drop-shadow-lg flex items-center">
+        <button className="bg-white dark:bg-dark-mode-el my-12 px-8 py-2 rounded-lg drop-shadow-lg flex items-center">
           <FaArrowLeft className="mr-4" />
           Back
         </button>
       </Link>
 
-      <div className="flex justify-between items-center">
-        <div className="w-full mr-20">
+      <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="max-w-md md:max-w-lg md:w-1/2 md:mr-20 mb-12">
           <img src={country.flag} alt="" />
         </div>
-        <div className="w-full">
+        <div className="max-w-md w-full md:w-1/2">
           <h1 className="text-3xl font-extrabold mb-8">{country.name}</h1>
-          <div className="flex justify-between mb-16">
-            <div>
+          <div className="flex flex-col md:flex-row justify-between">
+            <div className="mr-4 mb-8">
               <p className="text-16 pb-2">
                 Native Name:{' '}
                 <span className="font-light">{country.nativeName}</span>
@@ -67,7 +67,7 @@ export default function Details() {
                 Capital: <span className="font-light">{country.capital}</span>
               </p>
             </div>
-            <div>
+            <div className="mb-8">
               <p className="text-16 pb-2">
                 Top Level Domain:{' '}
                 <span className="font-light">{country.topLevelDomain}</span>
@@ -82,16 +82,18 @@ export default function Details() {
               </p>
             </div>
           </div>
-          <div className="flex flex-wrap">
-            <span className="mr-4 mb-2">Border Countries:</span>
-            <div className="flex">
-              {country.borders?.map((bc) => (
-                <div className="bg-white dark:bg-dark-mode-el mr-2 px-4 rounded-md shadow-md self-center">
-                  {bc}
-                </div>
-              ))}
+          {country.borders && (
+            <div className="flex flex-wrap mb-8">
+              <span className="mr-4 mb-2">Border Countries:</span>
+              <div className="flex flex-wrap">
+                {country.borders?.map((bc) => (
+                  <div className="bg-white dark:bg-dark-mode-el mr-2 px-4 mb-2 rounded-md shadow-md self-center">
+                    {bc}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
