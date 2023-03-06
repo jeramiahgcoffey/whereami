@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Root, { loader as homeLoader } from './routes/root';
+import Root from './routes/root';
 import ThemeProvider from './context/providers';
 import Home from './pages/Home';
 import './index.css';
 import Details from './pages/Details';
 import countries from '../data';
+import { getCountry } from './api';
 
 const router = createBrowserRouter(
   [
@@ -17,7 +18,9 @@ const router = createBrowserRouter(
         {
           path: '/',
           element: <Home />,
-          loader: homeLoader,
+          loader: () => {
+            return getCountry;
+          },
         },
         {
           path: '/:alpha3Code',

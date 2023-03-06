@@ -1,5 +1,6 @@
 import { Link, useLoaderData } from 'react-router-dom';
-import countries, { ICountry } from '../../data';
+import { ICountry } from '../../data';
+import { getCountry } from '../api';
 import { FaArrowLeft } from 'react-icons/fa';
 
 export default function Details() {
@@ -33,8 +34,8 @@ export default function Details() {
 
   const borderCountries = (): ICountry[] => {
     return (
-      country.borders?.map((bc) => {
-        return countries.find((c) => c.alpha3Code == bc) as ICountry;
+      country.borders?.map((alpha3Code) => {
+        return getCountry(alpha3Code);
       }) || []
     );
   };
