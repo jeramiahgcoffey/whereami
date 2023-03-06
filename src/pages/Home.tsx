@@ -46,7 +46,7 @@ export default function Home() {
           options={regions()}
         />
 
-        <div className="flex flex-wrap justify-center md:justify-around gap-12">
+        <div className="flex flex-wrap justify-around gap-12">
           {results().map((country) => (
             <CountryCard country={country} key={country.alpha2Code} />
           ))}

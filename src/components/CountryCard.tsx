@@ -3,9 +3,9 @@ import { ICountry } from '../../data';
 
 export default function CountryCard({ country }: { country: ICountry }) {
   return (
-    <Link className="flex-1" to={`/${country.name}`}>
+    <Link className="flex-1" to={`/${country.alpha3Code}`}>
       <div
-        className="bg-white dark:bg-dark-mode-el rounded-lg flex flex-col "
+        className="bg-white dark:bg-dark-mode-el rounded-lg flex flex-col mx-auto"
         style={{ minWidth: '240px', maxWidth: '300px' }}
       >
         <img

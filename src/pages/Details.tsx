@@ -1,5 +1,5 @@
 import { Link, useLoaderData } from 'react-router-dom';
-import { ICountry } from '../../data';
+import countries, { ICountry } from '../../data';
 import { FaArrowLeft } from 'react-icons/fa';
 
 export default function Details() {
@@ -29,6 +29,14 @@ export default function Details() {
         }
       })
       .join('');
+  };
+
+  const borderCountries = (): ICountry[] => {
+    return (
+      country.borders?.map((bc) => {
+        return countries.find((c) => c.alpha3Code == bc) as ICountry;
+      }) || []
+    );
   };
 
   return (
@@ -82,14 +90,16 @@ export default function Details() {
               </p>
             </div>
           </div>
-          {country.borders && (
+          {!!borderCountries().length && (
             <div className="flex flex-wrap mb-8">
               <span className="mr-4 mb-2">Border Countries:</span>
               <div className="flex flex-wrap">
-                {country.borders?.map((bc) => (
-                  <div className="bg-white dark:bg-dark-mode-el mr-2 px-4 mb-2 rounded-md shadow-md self-center">
-                    {bc}
-                  </div>
+                {borderCountries()!.map((bc) => (
+                  <Link to={`/${bc.alpha3Code}`}>
+                    <div className="bg-white dark:bg-dark-mode-el mr-2 px-4 mb-2 rounded-md shadow-md self-center">
+                      {bc?.name}
+                    </div>
+                  </Link>
                 ))}
               </div>
             </div>

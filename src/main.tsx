@@ -20,10 +20,12 @@ const router = createBrowserRouter(
           loader: homeLoader,
         },
         {
-          path: '/:name',
+          path: '/:alpha3Code',
           element: <Details />,
           loader: ({ params }) => {
-            return countries.find((country) => country.name == params.name);
+            return countries.find(
+              (country) => country.alpha3Code == params.alpha3Code
+            );
           },
         },
       ],
