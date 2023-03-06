@@ -37,7 +37,9 @@ export default function Filters({ handleInputChange, value, options }: TProps) {
           >
             <option value="">Search by Region</option>
             {options.map((option) => (
-              <option value={option.value}>{option.text}</option>
+              <option key={option.value} value={option.value}>
+                {option.text}
+              </option>
             ))}
           </select>
           <FaArrowDown className="absolute top-1/2 right-1 transform -translate-y-1/2 -translate-x-1/2 pointer-events-none" />

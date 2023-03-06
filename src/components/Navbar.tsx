@@ -1,6 +1,7 @@
 import { ThemeContext } from '../context/ThemeContext';
 import { useContext } from 'react';
 import { FaRegMoon, FaRegSun } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const { state, dispatch } = useContext(ThemeContext);
@@ -8,9 +9,11 @@ export default function Navbar() {
   return (
     <nav className="dark:bg-dark-mode-el drop-shadow-md">
       <div className="flex justify-between items-center max-w-6xl mx-auto h-24 px-4">
-        <h2 className="font-extrabold text-xl md:text-2xl">
-          Where in the world?
-        </h2>
+        <Link to="/">
+          <h2 className="font-extrabold text-xl md:text-2xl">
+            Where in the world?
+          </h2>
+        </Link>
         <div
           className="flex items-center cursor-pointer text-14"
           onClick={() =>
