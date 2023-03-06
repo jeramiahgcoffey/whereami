@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { ScrollRestoration, useLoaderData } from 'react-router-dom';
 import CountryCard from '../components/CountryCard';
 import Filters from '../components/Filters';
 import { ICountry } from '../../data';
@@ -19,6 +19,8 @@ export default function Home() {
   };
 
   const { countries } = useLoaderData() as { countries: ICountry[] };
+
+  console.log(countries);
 
   const results = () => {
     let results = countries.filter(
@@ -47,11 +49,12 @@ export default function Home() {
         />
 
         <div className="flex flex-wrap justify-around gap-12">
-          {results().map((country) => (
+          {results()?.map((country) => (
             <CountryCard country={country} key={country.alpha2Code} />
           ))}
         </div>
       </div>
+      {/* <ScrollRestoration /> */}
     </main>
   );
 }

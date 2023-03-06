@@ -6,8 +6,7 @@ import ThemeProvider from './context/providers';
 import Home from './pages/Home';
 import './index.css';
 import Details from './pages/Details';
-import countries from '../data';
-import { getCountry } from './api';
+import { getCountries, getCountry } from './api';
 
 const router = createBrowserRouter(
   [
@@ -19,16 +18,14 @@ const router = createBrowserRouter(
           path: '/',
           element: <Home />,
           loader: () => {
-            return getCountry;
+            return getCountries();
           },
         },
         {
           path: '/:alpha3Code',
           element: <Details />,
           loader: ({ params }) => {
-            return countries.find(
-              (country) => country.alpha3Code == params.alpha3Code
-            );
+            return getCountry(params.alpha3Code!);
           },
         },
       ],

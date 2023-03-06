@@ -1,7 +1,7 @@
 import countries, { ICountry } from '../../data';
 
-export const getCountries = () => {
-  return countries;
+export const getCountries = (): { countries: ICountry[] } => {
+  return { countries } || { countries: [] };
 };
 
 export const getCountry = (alpha3Code: string): ICountry => {
