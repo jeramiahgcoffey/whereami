@@ -30,6 +30,7 @@ export default function Filters({ handleInputChange, value, options }: TProps) {
 
         <div className="relative w-fit">
           <select
+            aria-label="region"
             name="region"
             id="region"
             className="dark:bg-dark-mode-el placeholder:text-white placeholder:text-sm py-4 pl-6 pr-12 rounded-lg appearance-none"

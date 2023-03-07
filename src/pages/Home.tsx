@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ScrollRestoration, useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import CountryCard from '../components/CountryCard';
 import Filters from '../components/Filters';
 import { ICountry } from '../../data';
@@ -54,7 +54,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-      {/* <ScrollRestoration /> */}
     </main>
   );
 }

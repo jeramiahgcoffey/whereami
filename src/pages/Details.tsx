@@ -51,8 +51,9 @@ export default function Details() {
 
       <div className="flex flex-col md:flex-row justify-between items-center">
         <div className="max-w-md md:max-w-lg md:w-1/2 md:mr-20 mb-12">
-          <img src={country.flag} alt="" />
+          <img src={country.flag} alt={`flag of ${country.name}`} />
         </div>
+
         <div className="max-w-md w-full md:w-1/2">
           <h1 className="text-3xl font-extrabold mb-8">{country.name}</h1>
           <div className="flex flex-col md:flex-row justify-between">
@@ -91,6 +92,7 @@ export default function Details() {
               </p>
             </div>
           </div>
+
           {!!borderCountries().length && (
             <div className="flex flex-wrap mb-8">
               <span className="mr-4 mb-2">Border Countries:</span>
