@@ -2,9 +2,13 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { ICountry } from '../../data';
 import { getCountry } from '../api';
 import { FaArrowLeft } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
 
 export default function Details() {
   const country = useLoaderData() as ICountry;
+
+  const [borderCountries, setBorderCountries] = useState<ICountry[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const currencies = (): string => {
     return (
@@ -22,7 +26,7 @@ export default function Details() {
 
   const languages = (): string => {
     return country.languages
-      .map((language, i) => {
+      ?.map((language, i) => {
         if (i + 1 === country.languages.length) {
           return `${language.name}`;
         } else {
@@ -32,13 +36,18 @@ export default function Details() {
       .join('');
   };
 
-  const borderCountries = (): ICountry[] => {
-    return (
-      country.borders?.map((alpha3Code) => {
-        return getCountry(alpha3Code);
-      }) || []
-    );
-  };
+  useEffect(() => {
+    if (!country.borders?.length) return;
+    setIsLoading(true);
+    const promises = country.borders?.map((bc) => getCountry(bc));
+    Promise.all(promises)
+      .then((res) => setBorderCountries(res))
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false));
+    return () => {
+      setBorderCountries([]);
+    };
+  }, [country]);
 
   return (
     <div className="max-w-md md:max-w-6xl mx-auto px-4">
@@ -93,19 +102,23 @@ export default function Details() {
             </div>
           </div>
 
-          {!!borderCountries().length && (
-            <div className="flex flex-wrap mb-8">
-              <span className="mr-4 mb-2">Border Countries:</span>
-              <div className="flex flex-wrap">
-                {borderCountries()!.map((bc) => (
-                  <Link to={`/${bc.alpha3Code}`}>
-                    <div className="bg-white dark:bg-dark-mode-el mr-2 px-4 mb-2 rounded-md shadow-md self-center">
-                      {bc?.name}
-                    </div>
-                  </Link>
-                ))}
+          {isLoading ? (
+            <h1>Loading...</h1>
+          ) : (
+            !!borderCountries.length && (
+              <div className="flex flex-wrap mb-8">
+                <span className="mr-4 mb-2">Border Countries:</span>
+                <div className="flex flex-wrap">
+                  {borderCountries!.map((bc) => (
+                    <Link to={`/${bc.alpha3Code}`} key={bc.numericCode}>
+                      <div className="bg-white dark:bg-dark-mode-el mr-2 px-4 mb-2 rounded-md shadow-md self-center">
+                        {bc?.name}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
+            )
           )}
         </div>
       </div>

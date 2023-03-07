@@ -1,9 +1,20 @@
-import countries, { ICountry } from '../../data';
+import axios from 'axios';
+import { ICountry } from '../../data';
 
-export const getCountries = (): { countries: ICountry[] } => {
-  return { countries } || { countries: [] };
+export const getCountries = async (): Promise<{ countries: ICountry[] }> => {
+  try {
+    const { data } = await axios.get('https://restcountries.com/v2/all');
+    return { countries: data };
+  } catch (error) {
+    console.error(error);
+    return { countries: [] };
+  }
 };
 
-export const getCountry = (alpha3Code: string): ICountry => {
-  return countries.find((country) => country.alpha3Code === alpha3Code)!;
+export const getCountry = async (alpha3Code: string): Promise<ICountry> => {
+  const { data } = await axios.get(
+    `https://restcountries.com/v2/alpha/${alpha3Code}`
+  );
+
+  return data;
 };

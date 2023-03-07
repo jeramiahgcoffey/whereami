@@ -17,15 +17,15 @@ const router = createBrowserRouter(
         {
           path: '/',
           element: <Home />,
-          loader: () => {
-            return getCountries();
+          loader: async () => {
+            return await getCountries();
           },
         },
         {
           path: '/:alpha3Code',
           element: <Details />,
-          loader: ({ params }) => {
-            return getCountry(params.alpha3Code!);
+          loader: async ({ params }) => {
+            return await getCountry(params.alpha3Code!);
           },
         },
       ],
