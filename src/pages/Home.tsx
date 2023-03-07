@@ -20,8 +20,6 @@ export default function Home() {
 
   const { countries } = useLoaderData() as { countries: ICountry[] };
 
-  console.log(countries);
-
   const results = () => {
     let results = countries.filter(
       (country) =>
